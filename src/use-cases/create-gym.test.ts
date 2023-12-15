@@ -3,7 +3,7 @@ import { it, expect, describe, beforeEach } from 'vitest'
 import { CreateGymUseCase } from './create-gym'
 
 let usersRepository: InMemoryGymsRepository
-// authenticateUseCase: name the main entity or variable we are testing as sut (Sistem under Test) - Desing pattern
+// createGymUseCase: name the main entity or variable we are testing as sut (Sistem under Test) - Desing pattern
 let sut: CreateGymUseCase
 
 describe('Register use case', () => {

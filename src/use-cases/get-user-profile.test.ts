@@ -5,7 +5,7 @@ import { GetProfileUseCase } from './get-user-profile'
 import { ResourceNotFoundError } from './errors/resource-not-found-error'
 
 let usersRepository: InMemoryUsersRepository
-// authenticateUseCase: name the main entity or variable we are testing as sut (Sistem under Test) - Desing pattern
+// getProfileUseCase: name the main entity or variable we are testing as sut (Sistem under Test) - Desing pattern
 let sut: GetProfileUseCase
 
 describe('Get User Profile Use Case', () => {

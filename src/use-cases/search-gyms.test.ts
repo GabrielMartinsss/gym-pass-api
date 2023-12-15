@@ -3,6 +3,7 @@ import { describe, it, expect, beforeEach } from 'vitest'
 import { SearchGymsUseCase } from './search-gyms'
 
 let gymsRepository: InMemoryGymsRepository
+// searchGymsUseCase: name the main entity or variable we are testing as sut (Sistem under Test) - Desing pattern
 let sut: SearchGymsUseCase
 
 describe('Search Gyms Use Case', () => {

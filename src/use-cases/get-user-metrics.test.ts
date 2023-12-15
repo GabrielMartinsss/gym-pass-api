@@ -3,6 +3,7 @@ import { describe, beforeEach, it, expect } from 'vitest'
 import { GetUserMetricsUseCase } from './get-user-metrics'
 
 let checkInsRepository: InMemoryCheckInsRepository
+// getUserMetricsUseCase: name the main entity or variable we are testing as sut (Sistem under Test) - Desing pattern
 let sut: GetUserMetricsUseCase
 
 describe('Get User Metrics Use Case', () => {

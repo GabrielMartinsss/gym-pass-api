@@ -5,7 +5,7 @@ import { InMemoryUsersRepository } from '@/repositories/in-memory/in-memory-user
 import { UserAlreadyExistsError } from './errors/user-already-exists-error'
 
 let usersRepository: InMemoryUsersRepository
-// authenticateUseCase: name the main entity or variable we are testing as sut (Sistem under Test) - Desing pattern
+// registerUseCase: name the main entity or variable we are testing as sut (Sistem under Test) - Desing pattern
 let sut: RegisterUseCase
 
 describe('Register use case', () => {

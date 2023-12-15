@@ -3,6 +3,7 @@ import { describe, it, expect, beforeEach } from 'vitest'
 import { FetchNearbyUseCase } from './fetch-nearby-gyms'
 
 let gymsRepository: InMemoryGymsRepository
+// fetchNearbyUseCase: name the main entity or variable we are testing as sut (Sistem under Test) - Desing pattern
 let sut: FetchNearbyUseCase
 
 describe('Search Gyms Use Case', () => {

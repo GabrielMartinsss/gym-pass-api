@@ -8,7 +8,7 @@ import { MaxDistanceError } from './errors/max-distance-error'
 
 let checkInRepository: InMemoryCheckInsRepository
 let gymRepository: InMemoryGymsRepository
-// authenticateUseCase: name the main entity or variable we are testing as sut (Sistem under Test) - Desing pattern
+// checkInUseCase: name the main entity or variable we are testing as sut (Sistem under Test) - Desing pattern
 let sut: CheckInUseCase
 
 describe('Check-in Use Case', () => {

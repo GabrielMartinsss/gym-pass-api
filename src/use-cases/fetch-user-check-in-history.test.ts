@@ -3,6 +3,7 @@ import { FetchUserCheckInHistoryUseCase } from './fetch-user-check-ins-history'
 import { InMemoryCheckInsRepository } from '@/repositories/in-memory/in-memory-check-ins-repository'
 
 let checkInsRepository: InMemoryCheckInsRepository
+// fetchUserCheckInHistoryUseCase: name the main entity or variable we are testing as sut (Sistem under Test) - Desing pattern
 let sut: FetchUserCheckInHistoryUseCase
 
 describe('Fetch User Check-in History Use Case', () => {
