@@ -1,23 +1,23 @@
 import { InMemoryCheckInsRepository } from '@/repositories/in-memory/in-memory-check-ins-repository'
 import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest'
 import { CheckInUseCase } from './check-in'
-import { InMemoryGymsRepository } from '@/repositories/in-memory/in-memory-gym-repository'
+import { InMemoryGymsRepository } from '@/repositories/in-memory/in-memory-gyms-repository'
 import { Decimal } from '@prisma/client/runtime/library'
 import { MaxNumberOfCheckInsError } from './errors/max-number-of-check-ins-error'
 import { MaxDistanceError } from './errors/max-distance-error'
 
-let checkInRepository: InMemoryCheckInsRepository
-let gymRepository: InMemoryGymsRepository
+let checkInsRepository: InMemoryCheckInsRepository
+let gymsRepository: InMemoryGymsRepository
 // checkInUseCase: name the main entity or variable we are testing as sut (Sistem under Test) - Desing pattern
 let sut: CheckInUseCase
 
 describe('Check-in Use Case', () => {
   beforeEach(async () => {
-    checkInRepository = new InMemoryCheckInsRepository()
-    gymRepository = new InMemoryGymsRepository()
-    sut = new CheckInUseCase(checkInRepository, gymRepository)
+    checkInsRepository = new InMemoryCheckInsRepository()
+    gymsRepository = new InMemoryGymsRepository()
+    sut = new CheckInUseCase(checkInsRepository, gymsRepository)
 
-    await gymRepository.create({
+    await gymsRepository.create({
       id: 'gym-01',
       title: 'JS Gym',
       description: '',
@@ -87,7 +87,7 @@ describe('Check-in Use Case', () => {
   })
 
   it('should not be able to check in on distant gym', async () => {
-    gymRepository.items.push({
+    gymsRepository.items.push({
       id: 'gym-02',
       title: 'TS Gym',
       description: '',

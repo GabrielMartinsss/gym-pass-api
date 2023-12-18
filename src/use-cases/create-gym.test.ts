@@ -1,4 +1,4 @@
-import { InMemoryGymsRepository } from '@/repositories/in-memory/in-memory-gym-repository'
+import { InMemoryGymsRepository } from '@/repositories/in-memory/in-memory-gyms-repository'
 import { it, expect, describe, beforeEach } from 'vitest'
 import { CreateGymUseCase } from './create-gym'
 

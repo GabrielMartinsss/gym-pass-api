@@ -1,4 +1,4 @@
-import { CheckInRepository } from '@/repositories/check-ins-repository'
+import { CheckInsRepository } from '@/repositories/check-ins-repository'
 
 interface GetUserMetricsRequest {
   userId: string
@@ -9,12 +9,12 @@ interface GetUserMetricsResponse {
 }
 
 export class GetUserMetricsUseCase {
-  constructor(private checkInRepository: CheckInRepository) {}
+  constructor(private checkInsRepository: CheckInsRepository) {}
 
   async execute({
     userId,
   }: GetUserMetricsRequest): Promise<GetUserMetricsResponse> {
-    const checkInsCount = await this.checkInRepository.countByUserId(userId)
+    const checkInsCount = await this.checkInsRepository.countByUserId(userId)
 
     return { checkInsCount }
   }
