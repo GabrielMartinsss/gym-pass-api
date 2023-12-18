@@ -1,9 +1,9 @@
 import { PrismaUsersRepository } from '@/repositories/prisma/prisma-users-repository'
-import { AuthenticateUseCase } from '../authenticate'
+import { GetProfileUseCase } from '../get-user-profile'
 
-export function makeAuthenticateUseCase() {
+export function makeGetUserProfileUseCase() {
   const usersRepository = new PrismaUsersRepository()
-  const useCase = new AuthenticateUseCase(usersRepository)
+  const useCase = new GetProfileUseCase(usersRepository)
 
   return useCase
 }
