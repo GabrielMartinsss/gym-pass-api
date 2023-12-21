@@ -12,7 +12,7 @@ describe('Search (e2e)', () => {
   })
 
   it('should be able to search a gym by title', async () => {
-    const { token } = await createAndAuthenticateUser(app)
+    const { token } = await createAndAuthenticateUser(app, true)
 
     const mapsNamesGyms = ['JavaScript Gym', 'TypeScript Gym']
 
