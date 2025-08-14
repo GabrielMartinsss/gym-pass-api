@@ -1,68 +1,135 @@
-<p align="center">
-  <a href="#Learnings">Aprendizado</a> -
-  <a href="#technology">Tecnologias</a> -
-  <a href="#features">Features</a> -
-  <a href="#status">Status</a>
-</p>
+<h1 align="center">GYMPASS</h1>
 
-<h1 align="center">GymPass API</h1>
 
-<p align="center">O Gympass API é um projeto de estudo Backend em NodeJs para check-ins em academias.</p>
+### 📌 Sobre o Projeto
 
-<hr id='Learnings'>
-<h3 align="center">Aprendizado</h3>
+O GymPass API é um sistema back-end construído com Node.js e Fastify, projetado para simular as principais operações de um serviço de academias: cadastro de usuários, autenticação, registro de check-ins e validação de acessos.
 
-- Alguns conceitos do SOLID;
-- Design Patterns;
-- Docker para inicializar o banco de dados;
-- JWT e Refresh Token;
-- Role Based Access Control (RBAC)
-- Testes
+Este projeto foi criado com foco no aprendizado prático de arquitetura limpa, princípios SOLID, testes automatizados e boas práticas de segurança, visando refletir cenários reais de desenvolvimento profissional.
 
-<hr id='technology'>
-<h3  align="center">Tecnologias</h3>
+---
 
-<p  align="center">
-  <img height="48" width="48" src="https://cdn.simpleicons.org/typescript" />
-  <img height="48" width="48" src="https://cdn.simpleicons.org/node.js" />
-  <img height="48" width="48" src="https://cdn.simpleicons.org/fastify" />
-  <img height="48" width="48" src="https://cdn.simpleicons.org/prisma" />
-  <img height="48" width="48" src="https://cdn.simpleicons.org/docker" />
-  <img height="48" width="48" src="https://cdn.simpleicons.org/zod" />
-</p>
+### 🎯 Objetivos do Sistema
 
-<hr id='features'>
-<h3  align="center">Features</h3>
+- Garantir segurança com autenticação JWT, refresh token e controle de acesso por papéis (RBAC).
 
-#### Requisitos funcionais (RFs)
-- [x] Deve ser possível se cadastrar;
-- [x] Deve ser possível se autenticar;
-- [x] Deve ser possível obter o perfil do usuário logado;
-- [x] Deve ser possível obter o número de check-ins realizados pelo usuário logado;
-- [x] Deve ser possível o usuário obter seu histórico de check-ins;
-- [x] Deve ser possível o usuário buscar academias príximas (até 10km);
-- [x] Deve ser possível o usuário buscar academias pelo nome;
-- [x] Deve ser possível o usuário realizar check-in em uma academia;
-- [x] Deve ser possível validar o check-in de um usuário;
-- [x] Deve ser possível cadastrar uma academia.
+- Assegurar consistência e performance com PostgreSQL, Prisma ORM e paginação eficiente.
 
-#### Regras de negócio (RNs)
+- Facilitar a escalabilidade e manutenção aplicando SOLID e Design Patterns.
 
-- [x] O usuário não deve poder se cadastrar com um e-mail duplicado;
-- [x] O usuário não pode fazer 2 check-ins no mesmo dia;
-- [x] O usuário não pode fazer check-in se não estiver perto (100m) da academia;
-- [x] O check-in só pode ser valido até 20 minutos após criado;
-- [x] O check-in só pode ser validado por administradores;
-- [x] A academia só pode ser cadastrada por administradores.
+- Elevar a confiabilidade do sistema com testes automatizados e repositórios in-memory.
 
-#### Requisitos não-funcionais (RNFs)
+- Proporcionar um ambiente de desenvolvimento simples com Docker para subir o banco de dados rapidamente.
 
-- [x] A senha do usuário precisa estar criptografada;
-- [x] Os dados da aplicação precisam estar persistidos em um banco PostgreSQL;
-- [x] Todas as listas de dados precisam estar paginadas com 20 itens por página;
-- [x] O usuário deve ser identificado por um JWT (JSON Web Token).
+---
 
-<hr id='status'>
+### 🛠 Tecnologias Utilizadas
+
+- Node.js com Fastify para APIs performáticas
+
+- TypeScript para segurança e legibilidade do código
+
+- Prisma ORM com PostgreSQL para persistência eficiente de dados
+
+- Docker para provisionamento do banco de dados
+
+- Zod para validação de dados
+
+- JWT e Refresh Token para autenticação segura
+
+- RBAC (Role-Based Access Control) para autorização por perfil de usuário
+
+- Testes automatizados com repositórios in-memory
+
+
+---
+
+### 📐 Arquitetura e Padrões
+
+- Princípios SOLID: garantindo baixo acoplamento e alta coesão entre os módulos.
+
+- Design Patterns: aplicação de padrões como Repository e Factory para organização do código.
+
+- Camadas bem definidas:
+
+   - Use Cases contendo a lógica de negócio
+
+   - Repositories para abstração de persistência
+
+   - Controllers e Middlewares para gerenciamento de rotas e autenticação
+
+- Tratamento de erros robusto com classes personalizadas (ex.: InvalidCredentialsError).
+
+---
+
+### 🚀 Funcionalidades Principais
+#### Requisitos Funcionais (RFs)
+
+- Cadastro e autenticação de usuários
+
+- Consulta ao perfil do usuário autenticado
+
+- Registro e validação de check-ins em academias
+
+- Busca de academias próximas (até 10km)
+
+- Busca de academias por nome
+
+- Consulta ao histórico e contagem de check-ins
+
+- Cadastro de academias (somente administradores)
+
+#### Regras de Negócio (RNs)
+
+- E-mails duplicados não são permitidos
+
+- Um usuário não pode realizar mais de um check-in por dia na mesma academia
+
+- Check-ins só são válidos dentro de um raio de 100m da academia
+
+- Check-ins expiram após 20 minutos e só podem ser validados por administradores
+
+#### Requisitos Não-Funcionais (RNFs)
+
+- Senhas criptografadas antes do armazenamento
+
+- Listagens paginadas (20 itens por página)
+
+- Autenticação e autorização baseadas em JWT
+
+---
+
+### 📦 Configuração com Docker
+
+O projeto utiliza Docker para provisionar o banco de dados PostgreSQL.
+
+Arquivo docker-compose.yml:
+
+```ts
+version: '3'
+services:
+  api-gym-pass-pg:
+    image: bitnami/postgresql
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRESQL_USERNAME=docker
+      - POSTGRESQL_PASSWORD=docker
+      - POSTGRESQL_DATABASE=apigympass
+```
+	  
+---
+
+### 🧪 Testes Automatizados
+
+Testes de caso de uso validam as regras de negócio (ex.: restrição de check-ins duplicados e paginação).
+
+Repositórios in-memory permitem simulação de cenários sem dependência do banco real.
+
+Cobertura de autenticação garantindo tratamento de erros com classes customizadas como InvalidCredentialsError.
+
+---
+
 <h4 align="center"> 
 	🚀 Status: Completo. 🚀
 </h4>
